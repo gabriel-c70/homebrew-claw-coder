@@ -1,4 +1,4 @@
-class ClawCoder < Formula
+cccclass ClawCoder < Formula
   desc "AI coding agent with RAG, knowledge graph and Docker sandboxing"
   homepage "https://github.com/gabriel-c70/Claw-Coder"
   url "https://github.com/gabriel-c70/Claw-Coder/releases/download/v0.1.0/claw-coder-macos.tar.gz"
