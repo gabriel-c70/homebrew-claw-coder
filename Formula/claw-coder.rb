@@ -1,26 +1,21 @@
 class ClawCoder < Formula
-  desc "AI coding agent with RAG, knowledge graph and Docker sandboxing"
+  desc "Local AI coding agent with RAG, knowledge graph and Docker sandboxing"
   homepage "https://github.com/gabriel-c70/Claw-Coder"
   url "https://github.com/gabriel-c70/Claw-Coder/releases/download/v0.1.0/claw-coder-macos.tar.gz"
   sha256 "94b90d429557017f71fd4479d66f0f970e151570b086f81dd360e27709b4d1e4"
   version "0.1.0"
 
-  depends_on "python@3.11"
   depends_on "node"
-  depends_on "ollama"
+  depends_on "python@3.11"
 
   def install
-    # install python deps
-    system "pip3", "install", "-r", "#{buildpath}/requirements.txt",
-           "--break-system-packages", "--quiet"
-    # install node deps
-    system "npm", "install", "--prefix", "#{libexec}", "--omit=dev"
-    # copy everything to libexec
+    system "npm", "install", "--prefix", "#{libexec}", "--omit=dev",
+           "--no-audit", "--no-fund"
     libexec.install Dir["*"]
-    # create the claw wrapper
     (bin/"claw").write <<~SH
       #!/bin/bash
-      node "#{libexec}/bin/claw-coder.js" "$@"
+      export CLAW_PYTHON="#{libexec}/venv/bin/python3"
+      exec node "#{libexec}/bin/claw-coder.js" "$@"
     SH
     chmod 0755, bin/"claw"
   end
