@@ -2,7 +2,7 @@ class ClawCoder < Formula
   desc "Local AI coding agent with RAG, knowledge graph and Docker sandboxing"
   homepage "https://github.com/gabriel-c70/Claw-Coder"
   url "https://github.com/gabriel-c70/Claw-Coder/releases/download/v0.1.0/claw-coder-macos.tar.gz"
-  sha256 "94b90d429557017f71fd4479d66f0f970e151570b086f81dd360e27709b4d1e4"
+  sha256 "dee6e889738b544133d5604a07e720a1c4f33abb48d13f553c2b3de7bc0ab72d"
   version "0.1.0"
 
   depends_on "node"
