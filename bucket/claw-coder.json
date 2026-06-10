@@ -1,0 +1,28 @@
+{
+    "version": "0.1.0",
+    "description": "Local AI coding agent with RAG, knowledge graph and Docker sandboxing",
+    "homepage": "https://github.com/gabriel-c70/Claw-Coder",
+    "license": "MIT",
+    "depends": [
+        "nodejs",
+        "python"
+    ],
+    "url": "https://github.com/gabriel-c70/Claw-Coder/releases/download/v0.1.0/claw-coder-macos.tar.gz",
+    "hash": "dee6e889738b544133d5604a07e720a1c4f33abb48d13f553c2b3de7bc0ab72d",
+    "post_install": [
+        "if (-not (Test-Path \"$dir\\venv\")) { python -m venv \"$dir\\venv\" }",
+        "Set-Content -Encoding Ascii -Path \"$dir\\claw.cmd\" -Value '@set \"CLAW_PYTHON=%~dp0venv\\Scripts\\python.exe\" & node \"%~dp0bin\\claw-coder.js\" %*'"
+    ],
+    "bin": [
+        [
+            "claw.cmd",
+            "claw"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/gabriel-c70/Claw-Coder"
+    },
+    "autoupdate": {
+        "url": "https://github.com/gabriel-c70/Claw-Coder/releases/download/v$version/claw-coder-macos.tar.gz"
+    }
+}
